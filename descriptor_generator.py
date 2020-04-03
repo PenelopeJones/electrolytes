@@ -7,25 +7,29 @@ from data_utils import dists
 
 
 
-
-
-def main(directory, parameters, num_files, box_length, bin_size, ion_size, min_r_value, max_r_value, smoothed):
+def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_value, max_r_value, smoothed):
     """
-    :param directory:
-    :param parameters:
-    :param num_files:
-    :param box_length:
-    :param bin_size:
-    :param ion_size:
-    :param min_r_value:
-    :param max_r_value:
-    :param smoothed:
+    Generates the vectorised smoothed or standard radial distribution function for anions in electrolytic solutions.
+    The raw data is a csv file with each row corresponding to a particular particle. The first column is the particle
+    index and the second, third and fourth columns correspond to the x,y,z positions of the particles. The fifth column
+    corresponds to the particle type (solvent = 2, cation = 1, anion = 0).
+
+    :param directory: String containing name of directory in which the relevant raw data can be found. e.g. '1.0-80/'
+    :param dataset: String containing the dataset name, e.g. '1080' meaning c = 1.0M, relative permittivity = 80.
+    :param num_files: Int containing the number of raw data files to be processed, can be between 1 and 50 using the
+                     raw data provided.
+    :param box_length: Float containing the simulation box length (in nm).
+    :param bin_size: Float containing the histogram bin size (in nm).
+    :param ion_size: Float containing the ion size (in nm), only used if calculating the smoothed RDF.
+    :param min_r_value: Float containing the minimum x value to be considered (in nm) when calculating the RDF.
+    :param max_r_value: Float containing the maximum x value to be considered (in nm) when calculating the RDF.
+    :param smoothed: Bool indicating whether the smoothed or standard RDF should be calculated.
     :return:
     """
 
-    f = open('data/descriptors/' + parameters + '_settings.txt', 'w')
+    f = open('data/descriptors/' + dataset + '_settings.txt', 'w')
     f.write('Directory = ' + directory)
-    f.write('\n Parameters = ' + parameters)
+    f.write('\n Dataset = ' + dataset)
     f.write('\n Number of files = ' + str(num_files))
     f.write('\n Box length = ' + str(box_length))
     f.write('\n Bin size = ' + str(bin_size))
@@ -70,7 +74,7 @@ def main(directory, parameters, num_files, box_length, bin_size, ion_size, min_r
         else:
             G = np.concatenate((G, G_file), axis = 0)
 
-        path_to_save = 'data/descriptors/' + 'fv' + parameters + '.npy'
+        path_to_save = 'data/descriptors/' + 'fv' + dataset + '.npy'
         np.save(path_to_save, G)
 
     print('Descriptor saved in ' + path_to_save)
@@ -81,7 +85,7 @@ if __name__ == "__main__":
     parser.add_argument('--directory', type=str, default='1.0-80/',
                         help='Directory containing data corresponding to a '
                              'particular concentration and relative permittivity.')
-    parser.add_argument('--parameters', type=str, default='1080',
+    parser.add_argument('--dataset', type=str, default='1080',
                         help='First two digits correspond to the concentration (M), e.g. 10 = 1.0M. '
                              'Second two digits correspond to the relative permittivity.')
     parser.add_argument('--num_files', type=int, default=50, help='Number of files to process.'
@@ -100,5 +104,5 @@ if __name__ == "__main__":
                                                             "Otherwise, the standard RDF is calculated.")
     args = parser.parse_args()
 
-    main(args.directory, args.parameters, args.num_files, args.box_length, args.bin_size, args.ion_size, args.min_r_value,
+    main(args.directory, args.dataset, args.num_files, args.box_length, args.bin_size, args.ion_size, args.min_r_value,
          args.max_r_value, args.smoothed)
