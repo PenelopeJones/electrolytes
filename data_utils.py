@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+import itertools
+from scipy.stats import norm
 
 
 def midpoints(min_r_value, max_r_value, bin_size):
@@ -62,8 +62,7 @@ def rdf(r, prefactor, bin_size, ion_size, min_r_value, max_r_value, smoothed=Fal
         r_mean = 0.5 * (lower_r_bound + upper_r_bound)
         V_shell = 4 * np.pi * r_mean ** 2 * bin_size
 
-        if smoothed:
-            print("Using smoothed RDF")
+        if smoothed ==True:
             x = norm.cdf(upper_r_bound, loc=r, scale=ion_size) - \
                 norm.cdf(lower_r_bound, loc=r, scale=ion_size)
             number_in_bin = np.sum(x)
@@ -77,7 +76,7 @@ def rdf(r, prefactor, bin_size, ion_size, min_r_value, max_r_value, smoothed=Fal
     return gs
 
 
-def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, prefactor_c = None, bin_size=0.15,
+def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, prefactor_c = None, smoothed = False, bin_size=0.15,
           ion_size=0.15, min_r_value=0.0, max_r_value=1.0):
     """
     Given up to three pandas dataframes each comprising the 3D co-ordinates of all
@@ -108,7 +107,7 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
                                 ion_A.at[i, 4])
             r_a_j.append(x)
         r_a_j = np.asarray(r_a_j)
-        g_a = rdf(r_a_j, prefactor_a, bin_size, ion_size, min_r_value, max_r_value)
+        g_a = rdf(r_a_j, prefactor_a, bin_size, ion_size, min_r_value, max_r_value, smoothed)
         g_tot = g_a
 
         if ion_B is not None:
@@ -117,7 +116,7 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
                                     ion_B.at[k, 4])
                 r_b_j.append(x)
             r_b_j = np.asarray(r_b_j)
-            g_b = rdf(r_b_j, prefactor_b, bin_size, ion_size, min_r_value, max_r_value)
+            g_b = rdf(r_b_j, prefactor_b, bin_size, ion_size, min_r_value, max_r_value, smoothed)
             g_tot = np.concatenate((g_tot, g_b), axis=None)
 
         if ion_C is not None:
@@ -126,8 +125,9 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
                                     ion_C.at[l, 4])
                 r_c_j.append(x)
             r_c_j = np.asarray(r_c_j)
-            g_c = rdf(r_c_j, prefactor_c, bin_size, ion_size, min_r_value, max_r_value)
+            g_c = rdf(r_c_j, prefactor_c, bin_size, ion_size, min_r_value, max_r_value, smoothed)
             g_tot = np.concatenate((g_tot, g_c), axis=None)
+
 
         G.append(g_tot)
     return G
