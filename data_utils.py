@@ -17,7 +17,7 @@ def midpoints(min_r_value, max_r_value, bin_size):
     max_r = max_r_value - 0.5*bin_size
     return np.arange(min_r, max_r, bin_size)
 
-def radial_distance(x_i, y_i, z_i, x_j, y_j, z_j, box_length = 8.0):
+def radial_distance(x_i, y_i, z_i, x_j, y_j, z_j, box_length=8.0):
     """
     Calculates the effective distance between two particles using periodic BCs and the
     minimum image convention.
@@ -75,18 +75,22 @@ def rdf(r, prefactor, bin_size, ion_size, min_r_value, max_r_value, smoothed=Fal
     return gs
 
 
-def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, prefactor_c = None, smoothed = False, bin_size=0.15,
+def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
+          prefactor_c=None, smoothed=False, bin_size=0.15,
           ion_size=0.15, min_r_value=0.0, max_r_value=1.0):
     """
     Given up to three pandas dataframes each comprising the 3D co-ordinates of all
     ions of a particular type (at a particular snapshot in time), this calculates the
     distribution functions g_Aa(r), g_Ba(r), g_Ca(r) for each ion a of type A.
 
-    :param ion_A: Pandas dataframe containing 3D coordinates of the type A ions in columns 2-4.
+    :param ion_A: Pandas dataframe containing 3D coordinates of the type A ions in
+                  columns 2-4.
     :param prefactor_a: Prefactor for calculating the g_Aa distribution.
-    :param ion_B: (optional )Pandas dataframe containing 3D coordinates of the type B ions in columns 2-4.
+    :param ion_B: (optional )Pandas dataframe containing 3D coordinates of the type B
+                   ions in columns 2-4.
     :param prefactor_b: Prefactor for calculating the g_Ba distribution.
-    :param ion_C: (optional) Pandas dataframe containing 3D coordinates of the type C ions in columns 2-4.
+    :param ion_C: (optional) Pandas dataframe containing 3D coordinates of the type C
+                  ions in columns 2-4.
     :param prefactor_c: Prefactor for calculating the g_Ca distribution.
     :param bin_size: Histogram bin size (float)
     :param ion_size: Ion size, for calculating the smoothed RDF, if smoothed = True (float)
@@ -102,8 +106,8 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
         for i, rows_Aa in ion_A.iterrows():
             if i == j:
                 continue
-            x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_A.at[i, 2], ion_A.at[i, 3],
-                                ion_A.at[i, 4])
+            x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_A.at[i, 2],
+                                ion_A.at[i, 3], ion_A.at[i, 4])
             r_a_j.append(x)
         r_a_j = np.asarray(r_a_j)
         g_a = rdf(r_a_j, prefactor_a, bin_size, ion_size, min_r_value, max_r_value, smoothed)
@@ -111,8 +115,8 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
 
         if ion_B is not None:
             for k, rows_B in ion_B.iterrows():
-                x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_B.at[k, 2], ion_B.at[k, 3],
-                                    ion_B.at[k, 4])
+                x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_B.at[k, 2],
+                                    ion_B.at[k, 3],ion_B.at[k, 4])
                 r_b_j.append(x)
             r_b_j = np.asarray(r_b_j)
             g_b = rdf(r_b_j, prefactor_b, bin_size, ion_size, min_r_value, max_r_value, smoothed)
@@ -120,13 +124,12 @@ def dists(ion_A, prefactor_a, ion_B = None, prefactor_b = None, ion_C = None, pr
 
         if ion_C is not None:
             for l, rows_C in ion_C.iterrows():
-                x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_C.at[l, 2], ion_C.at[l, 3],
-                                    ion_C.at[l, 4])
+                x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_C.at[l, 2],
+                                    ion_C.at[l, 3], ion_C.at[l, 4])
                 r_c_j.append(x)
             r_c_j = np.asarray(r_c_j)
             g_c = rdf(r_c_j, prefactor_c, bin_size, ion_size, min_r_value, max_r_value, smoothed)
             g_tot = np.concatenate((g_tot, g_c), axis=None)
-
 
         G.append(g_tot)
     return G

@@ -7,19 +7,19 @@ from sklearn.preprocessing import MinMaxScaler
 from bayesian_gmm import BayesianGMM
 
 
-def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, run_number, max_iterations, VERBOSE):
+def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar,
+         run_number, max_iterations, VERBOSE):
     X = np.load(directory + 'fv' + dataset + '.npy')
-    print(np.mean(X, axis = 0))
+    print(np.mean(X, axis=0))
     print(X.shape)
     X = X[split * n:(split + 1) * n, 0:8]
     print(X.shape)
-    print(np.mean(X, axis = 0))
+    print(np.mean(X, axis=0))
     X_df = pd.DataFrame(X)
 
     # Transform the data using linear scaling
     scaler = MinMaxScaler(feature_range=(-1.0, 1.0))
     X_df = scaler.fit_transform(X_df)
-    scale = scaler.scale_
 
     (n, dim) = np.shape(X_df)
 
@@ -56,7 +56,7 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
     for i in range(run_number):
         bgmm.run(X=X_df, max_iterations=max_iterations)
         elbo = bgmm.elbo()
-        nk = bgmm._nk
+        nk = bgmm.nk
 
 
         if VERBOSE:
@@ -67,8 +67,8 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
         if elbo > elbo_max:
             elbo_max = elbo
             nk_max = nk
-            mk_max = scaler.inverse_transform(bgmm._mk)
-            Z_max = bgmm._Z
+            mk_max = scaler.inverse_transform(bgmm.mk)
+            Z_max = bgmm.Z
 
             np.save('data/results/' + dataset + '/' + filename + '_elbo_max.npy', elbo_max)
             np.save('data/results/' + dataset + '/' + filename + '_m_max.npy', mk_max)
@@ -81,12 +81,14 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--directory', default='data/descriptors/', help="Directory where descriptors are stored.")
+    parser.add_argument('--directory', default='data/descriptors/', help="Directory where "
+                                                                         "descriptors are stored.")
     parser.add_argument('--dataset', default='1080', help="Dataset.")
     parser.add_argument('--n', type=int, default=4000,
                         help='Number of datapoints to use.')
     parser.add_argument('--split', type=int, default=0,
-                        help='Split can be 0, 1 or 2 (or None); the split number dictates which set of descriptors.')
+                        help='Split can be 0, 1 or 2 (or None); the split number dictates which '
+                             'set of descriptors.')
     parser.add_argument('--K', type=int, default=2,
                         help='Number of model components.')
     parser.add_argument('--prior', type=str, default='uninformative',
@@ -96,7 +98,8 @@ if __name__ == '__main__':
     parser.add_argument('--alpha0', type=float, default=1.0,
                         help='Dirichlet hyperparameter.')
     parser.add_argument('--beta0', type=float, default=1.0e-11,
-                        help='Hyperparameter affecting breadth of distribution over mean. The smaller beta0 is, the broader the prior.')
+                        help='Hyperparameter affecting breadth of distribution over mean. The '
+                             'smaller beta0 is, the broader the prior.')
     parser.add_argument('--v0', type=float, default=8,
                         help='Number of degrees of freedom in GW prior.')
     parser.add_argument('--w0_scalar', type=float, default=1.0,
@@ -105,7 +108,8 @@ if __name__ == '__main__':
                         help='Number of runs.')
     parser.add_argument('--max_iterations', type=int, default=1000,
                         help='Maximum number of iterations per run.')
-    parser.add_argument('--VERBOSE', default=True, help="Determines how much information should be written to text file.")
+    parser.add_argument('--VERBOSE', default=True, help="Determines how much information should "
+                                                        "be written to text file.")
 
     args = parser.parse_args()
 

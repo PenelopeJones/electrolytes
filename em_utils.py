@@ -1,6 +1,5 @@
 import numpy as np
-
-from numpy.linalg.linalg import inv, det
+from numpy.linalg.linalg import inv
 from numpy.linalg import slogdet
 from scipy.special import gammaln
 from scipy.special.basic import digamma
@@ -90,7 +89,7 @@ def update_w(w0, nk, sk, xk, m0, beta0, betak):
     nk = np.expand_dims(nk, axis=-1)    #[K, 1, 1]
 
     w0_inv = np.expand_dims(inv(w0), axis=0) #[1,dim,dim]
-    w_inv = np.multiply(nk,sk) + diff + w0_inv #[K,dim,dim]
+    w_inv = np.multiply(nk, sk) + diff + w0_inv #[K,dim,dim]
 
     K = w_inv.shape[0]
     w = np.zeros(w_inv.shape)
@@ -132,20 +131,28 @@ def log_exponent(X, mk, vk, wk, betak):
     """
     (K, dim) = mk.shape
     X = np.expand_dims(X, axis=1)  #[N, 1, dim]
-    X = np.repeat(X, K, axis = 1) #[N, K, dim]
+    X = np.repeat(X, K, axis=1) #[N, K, dim]
     mk = np.expand_dims(mk, axis=0) #[1, K, dim]
     diff = np.transpose((X - mk), (1, 0, 2)) #[K, N, dim]
-    diff = np.einsum('kni,kij,knj->kn', diff,wk,diff) #[K,N]
+    diff = np.einsum('kni,kij,knj->kn', diff, wk, diff) #[K,N]
     diff = diff.T  #[N, K]
 
-    vk = np.expand_dims(vk, axis = 0)  #[1, K]
-    betak = np.expand_dims(betak, axis = 0) #[1, K]
+    vk = np.expand_dims(vk, axis=0)  #[1, K]
+    betak = np.expand_dims(betak, axis=0) #[1, K]
 
     log = np.multiply(vk, diff) #[N, K]
     log += dim*np.reciprocal(betak) #[N,K]
     return log
 
 def responsibilities(log_pi, log_lambda, log_exp, dim):
+    """
+
+    :param log_pi:
+    :param log_lambda:
+    :param log_exp:
+    :param dim:
+    :return:
+    """
     log_pi = np.expand_dims(log_pi, axis=0) #[1,K]
     log_lambda = np.expand_dims(log_lambda, axis=0) #[1,K]
     log = - 0.5*log_exp + log_pi + 0.5*log_lambda - 0.5*dim*np.log(2.0*np.pi)     #[N,K] 10.46
@@ -155,12 +162,32 @@ def responsibilities(log_pi, log_lambda, log_exp, dim):
 
 #Calculating the ELBO!
 def log_p_joint(ln_p_x, ln_p_z, ln_p_pi, ln_p_ml):
+    """
+
+    :param ln_p_x:
+    :param ln_p_z:
+    :param ln_p_pi:
+    :param ln_p_ml:
+    :return:
+    """
     return ln_p_x + ln_p_z + ln_p_pi + ln_p_ml
 
 def log_q_joint(ln_q_z, ln_q_pi, ln_q_ml):
+    """
+
+    :param ln_q_z:
+    :param ln_q_pi:
+    :param ln_q_ml:
+    :return:
+    """
     return ln_q_z + ln_q_pi + ln_q_ml
 
 def log_q_z(Z):
+    """
+
+    :param Z:
+    :return:
+    """
     Z = Z[np.where(Z > 1e-100)]
     Z = np.multiply(Z, np.log(Z))
     return Z.sum()
@@ -172,7 +199,7 @@ def log_q_pi(alphak, ln_pi):
     :return:
     """
     sum = np.multiply((alphak - 1.0), ln_pi).sum()
-    sum+= gammaln(alphak.sum()) - gammaln(alphak).sum()
+    sum += gammaln(alphak.sum()) - gammaln(alphak).sum()
     return sum
 
 def log_q_ml(dim, K, ln_lambda, betak, wk, vk):
@@ -261,7 +288,8 @@ def log_p_ml(dim, K, ln_lambda, beta0, betak, v0, vk, m0, mk, w0, wk):
     s2 = np.einsum('ij, kji->k', inv(w0), wk)  #[K,]
     s2 = np.multiply(vk, s2) #[K,]
 
-    sum = (v0 - dim)*ln_lambda - dim*beta0*np.reciprocal(betak) + dim*np.log(0.5*beta0 / np.pi) - s1 - s2  #[K,]
+    sum = (v0 - dim)*ln_lambda - dim*beta0*np.reciprocal(betak) + \
+          dim*np.log(0.5*beta0 / np.pi) - s1 - s2  #[K,]
     sum = 0.5*sum.sum() #float
 
     (_, minus_log_b) = slogdet(w0)
