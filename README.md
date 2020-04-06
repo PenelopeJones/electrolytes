@@ -28,6 +28,7 @@ This code was implemented using Python 3.7.6 and the following packages:
 - scikit-learn (0.22.1)
 - scipy (1.4.1)
 
-## Contact details
+## Contact / Acknowledgements
 
-If you use this code for your research, please cite or acknowledge the author (Penelope Jones, pj321@cam.ac.uk).
+If you use this code for your research, please cite or acknowledge the author (Penelope Jones, pj321@cam.ac.uk). 
+Please feel free to contact me if you have any questions about this work.
