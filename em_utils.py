@@ -5,8 +5,6 @@ from numpy.linalg import slogdet
 from scipy.special import gammaln
 from scipy.special.basic import digamma
 
-import pdb
-
 
 def weighted_means(X, Z, nk):
     """
@@ -163,6 +161,7 @@ def log_q_joint(ln_q_z, ln_q_pi, ln_q_ml):
     return ln_q_z + ln_q_pi + ln_q_ml
 
 def log_q_z(Z):
+    Z = Z[np.where(Z > 1e-100)]
     Z = np.multiply(Z, np.log(Z))
     return Z.sum()
 
