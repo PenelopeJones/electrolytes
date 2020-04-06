@@ -2,14 +2,12 @@ import argparse
 
 import numpy as np
 import pandas as pd
-import pdb
-
 from sklearn.preprocessing import MinMaxScaler
 
 from bayesian_gmm import BayesianGMM
 
 
-def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, run_number, max_iterations):
+def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, run_number, max_iterations, VERBOSE):
     X = np.load(directory + 'fv' + dataset + '.npy')
     print(np.mean(X, axis = 0))
     print(X.shape)
@@ -21,7 +19,7 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
     # Transform the data using linear scaling
     scaler = MinMaxScaler(feature_range=(-1.0, 1.0))
     X_df = scaler.fit_transform(X_df)
-    X_scale = scaler.scale_
+    scale = scaler.scale_
 
     (n, dim) = np.shape(X_df)
 
@@ -49,8 +47,6 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
     f.write('\n w0_scalar = ' + str(w0_scalar))
     f.flush()
 
-    VERBOSE = True
-
     print("Building model.")
 
     elbo_max = -1.0e8
@@ -62,7 +58,6 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
         elbo = bgmm.elbo()
         nk = bgmm._nk
 
-        pdb.set_trace()
 
         if VERBOSE:
             f.write("\n Run {:.1f} : ELBO = {:.6f}".format(i, elbo))
@@ -75,12 +70,12 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar, r
             mk_max = scaler.inverse_transform(bgmm._mk)
             Z_max = bgmm._Z
 
-            np.save(filename + '_elbo_max.npy', elbo_max)
-            np.save(filename + '_m_max.npy', mk_max)
-            np.save(filename + '_Z_max.npy', Z_max)
-            np.save(filename + '_nk_max.npy', nk_max)
+            np.save('data/results/' + dataset + '/' + filename + '_elbo_max.npy', elbo_max)
+            np.save('data/results/' + dataset + '/' + filename + '_m_max.npy', mk_max)
+            np.save('data/results/' + dataset + '/' + filename + '_Z_max.npy', Z_max)
+            np.save('data/results/' + dataset + '/' + filename + '_nk_max.npy', nk_max)
 
-    f.write("\n Maximum ELBO = {:.6f}.format(elbo_max)")
+    f.write("\n Maximum ELBO = {:.6f}".format(elbo_max))
     f.flush()
 
 
@@ -110,8 +105,9 @@ if __name__ == '__main__':
                         help='Number of runs.')
     parser.add_argument('--max_iterations', type=int, default=1000,
                         help='Maximum number of iterations per run.')
+    parser.add_argument('--VERBOSE', default=True, help="Determines how much information should be written to text file.")
 
     args = parser.parse_args()
 
     main(args.directory, args.dataset, args.n, args.split, args.K, args.prior, args.alpha0, args.beta0, args.v0,
-         args.w0_scalar, args.run_number, args.max_iterations)
+         args.w0_scalar, args.run_number, args.max_iterations, args.VERBOSE)
