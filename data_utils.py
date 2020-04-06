@@ -62,7 +62,7 @@ def rdf(r, prefactor, bin_size, ion_size, min_r_value, max_r_value, smoothed=Fal
         r_mean = 0.5 * (lower_r_bound + upper_r_bound)
         V_shell = 4 * np.pi * r_mean ** 2 * bin_size
 
-        if smoothed ==True:
+        if smoothed:
             x = norm.cdf(upper_r_bound, loc=r, scale=ion_size) - \
                 norm.cdf(lower_r_bound, loc=r, scale=ion_size)
             number_in_bin = np.sum(x)
