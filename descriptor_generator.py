@@ -12,8 +12,7 @@ import pandas as pd
 
 from data_utils import dists
 
-
-
+import pdb
 def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_value,
          max_r_value, smoothed):
     """
@@ -35,7 +34,9 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
     :return:
     """
 
-    f = open('data/descriptors/' + dataset + '_settings.txt', 'w')
+    label = 'bs' + str(bin_size).replace('.', '') + '_is' + str(ion_size).replace('.', '')
+
+    f = open(dataset + '_settings.txt', 'w')
     f.write('Directory = ' + directory)
     f.write('\n Dataset = ' + dataset)
     f.write('\n Number of files = ' + str(num_files))
@@ -47,29 +48,27 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
     f.write('\n Smoothed = ' + str(smoothed))
     f.flush()
 
-
     if smoothed:
         print("Generating smoothed RDF descriptor.")
     else:
         print("Generating standard RDF descriptor.")
 
-
-
-    for num in range(0, int(20*(num_files - 1) + 1), 20):
-        filename = 'data/raw_data/' + directory + 'config_' + str(num)
+    for num in range(0, int(20 * (num_files - 1) + 1), 20):
+        pdb.set_trace()
+        filename = '../../../../data/raw_data/' + directory + 'config_' + str(num)
         f.write('\n Processing ' + str(filename))
         f.flush()
 
-        #Read file into df. May need to adapt nrows according to dataframe size.
+        # Read file into df. May need to adapt nrows according to dataframe size.
         df = pd.read_csv(filename, sep='\s+', skiprows=24, usecols=[2, 3, 4, 5],
                          nrows=10000, header=None, lineterminator='}')
 
-        #Identify the particle type subsets
+        # Identify the particle type subsets
         solvent = df.loc[df[5] == 2]
         cation = df.loc[df[5] == 1]
         anion = df.loc[df[5] == 0]
 
-        #Generate the prefactors
+        # Generate the prefactors
         prefactor_an = box_length ** 3 / (len(anion) - 1)
         prefactor_cat = box_length ** 3 / (len(cation))
         prefactor_sol = box_length ** 3 / (len(solvent))
@@ -84,7 +83,7 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         else:
             g = np.concatenate((g, g_file), axis=0)
 
-        path_to_save = 'data/descriptors/' + 'fv' + dataset + '.npy'
+        path_to_save = 'fv' + dataset + '.npy'
         np.save(path_to_save, g)
 
     print('Descriptor saved in ' + path_to_save)
