@@ -12,7 +12,8 @@ import pandas as pd
 
 from data_utils import dists
 
-import pdb
+
+
 def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_value,
          max_r_value, smoothed):
     """
@@ -54,7 +55,6 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         print("Generating standard RDF descriptor.")
 
     for num in range(0, int(20 * (num_files - 1) + 1), 20):
-        pdb.set_trace()
         filename = '../../../../data/raw_data/' + directory + 'config_' + str(num)
         f.write('\n Processing ' + str(filename))
         f.flush()
