@@ -4,8 +4,6 @@ from em_utils import *
 
 
 class BayesianGMM():
-"""
-"""
     def __init__(self, dim, n, K, alpha0, beta0, v0, w0_scalar):
         """
 
