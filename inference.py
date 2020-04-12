@@ -4,12 +4,13 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
-from bayesian_gmm import BayesianGMM
+import bayesian_gmm
 
 
 def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar,
          run_number, max_iterations, VERBOSE):
-    X = np.load(directory + 'fv' + dataset + '.npy')
+    X = np.load(directory + 'rfv' + dataset + '.npy')
+
     print(np.mean(X, axis=0))
     print(X.shape)
     X = X[split * n:(split + 1) * n, 0:8]
@@ -34,49 +35,50 @@ def main(directory, dataset, n, split, K, prior, alpha0, beta0, v0, w0_scalar,
 
     filename = dataset + str(split) + '_' + str(K) + 'c'
 
-    f = open('data/results/' + dataset + '/' + filename + '.txt', 'w')
-    f.write('\n Dataset = ' + str(dataset))
-    f.write('\n Split = ' + str(split))
-    f.write('\n Number of data points = ' + str(n))
-    f.write('\n Prior = ' + str(prior))
-    f.write('\n Number of runs = ' + str(run_number))
-    f.write('\n Maximum number of iterations = ' + str(max_iterations))
-    f.write('\n alpha0 = ' + str(alpha0))
-    f.write('\n beta0 = ' + str(beta0))
-    f.write('\n v0 = ' + str(v0))
-    f.write('\n w0_scalar = ' + str(w0_scalar))
-    f.flush()
+    with open(directory + filename + '.txt', 'w+') as f:
+        f.write('\n Dataset = ' + str(dataset))
+        f.write('\n Split = ' + str(split))
+        f.write('\n Number of data points = ' + str(n))
+        f.write('\n Prior = ' + str(prior))
+        f.write('\n Number of runs = ' + str(run_number))
+        f.write('\n Maximum number of iterations = ' + str(max_iterations))
+        f.write('\n alpha0 = ' + str(alpha0))
+        f.write('\n beta0 = ' + str(beta0))
+        f.write('\n v0 = ' + str(v0))
+        f.write('\n w0_scalar = ' + str(w0_scalar))
+        f.flush()
 
-    print("Building model.")
+        print("Building model.")
 
-    elbo_max = -1.0e8
+        elbo_max = -1.0e8
 
-    bgmm = BayesianGMM(dim=dim, n=n, K=K, alpha0=alpha0, beta0=beta0, v0=v0, w0_scalar=w0_scalar)
+        bgmm = bayesian_gmm.BayesianGMM(dim=dim, n=n, K=K, alpha0=alpha0, beta0=beta0, v0=v0, w0_scalar=w0_scalar)
 
-    for i in range(run_number):
-        bgmm.run(X=X_df, max_iterations=max_iterations)
-        elbo = bgmm.elbo()
-        nk = bgmm.nk
+        for i in range(run_number):
+            bgmm.run(X=X_df, max_iterations=max_iterations)
+            elbo = bgmm.elbo()
+            nk = bgmm.nk
 
 
-        if VERBOSE:
-            f.write("\n Run {:.1f} : ELBO = {:.6f}".format(i, elbo))
-            f.write("\n Number of components: {:.2f}, {:.2f}".format(nk[0], nk[1]))
-            f.flush()
+            if VERBOSE:
+                f.write("\n Run {:.1f} : ELBO = {:.6f} \n".format(i, elbo))
 
-        if elbo > elbo_max:
-            elbo_max = elbo
-            nk_max = nk
-            mk_max = scaler.inverse_transform(bgmm.mk)
-            Z_max = bgmm.Z
+                for p in range(nk.shape[0]):
+                    f.write(str(np.float(nk[p])) + "\n")
 
-            np.save('data/results/' + dataset + '/' + filename + '_elbo_max.npy', elbo_max)
-            np.save('data/results/' + dataset + '/' + filename + '_m_max.npy', mk_max)
-            np.save('data/results/' + dataset + '/' + filename + '_Z_max.npy', Z_max)
-            np.save('data/results/' + dataset + '/' + filename + '_nk_max.npy', nk_max)
+            if elbo > elbo_max:
+                elbo_max = elbo
+                nk_max = nk
+                mk_max = scaler.inverse_transform(bgmm.mk)
+                Z_max = bgmm.Z
 
-    f.write("\n Maximum ELBO = {:.6f}".format(elbo_max))
-    f.flush()
+                np.save(directory + filename + '_elbo_max.npy', elbo_max)
+                np.save(directory + filename + '_m_max.npy', mk_max)
+                np.save(directory + filename + '_Z_max.npy', Z_max)
+                np.save(directory + filename + '_nk_max.npy', nk_max)
+
+        f.write("\n Maximum ELBO = {:.6f}".format(elbo_max))
+        f.flush()
 
 
 if __name__ == '__main__':
