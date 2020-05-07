@@ -13,7 +13,6 @@ import pandas as pd
 from data_utils import dists
 
 
-
 def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_value,
          max_r_value, smoothed):
     """
@@ -54,14 +53,14 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
     else:
         print("Generating standard RDF descriptor.")
 
-    for num in range(0, int(20 * (num_files - 1) + 1), 20):
+    for num in range(40, int(20 * (num_files - 1) + 1), 20):
         filename = '../../../../data/raw_data/' + directory + 'config_' + str(num)
         f.write('\n Processing ' + str(filename))
         f.flush()
 
         # Read file into df. May need to adapt nrows according to dataframe size.
         df = pd.read_csv(filename, sep='\s+', skiprows=24, usecols=[2, 3, 4, 5],
-                         nrows=10000, header=None, lineterminator='}')
+                         nrows=20000, header=None, lineterminator='}')
 
         # Identify the particle type subsets
         solvent = df.loc[df[5] == 2]
@@ -76,7 +75,8 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         g_file = dists(ion_A=anion, prefactor_a=prefactor_an, ion_B=cation,
                        prefactor_b=prefactor_cat, ion_C=solvent,
                        prefactor_c=prefactor_sol, smoothed=smoothed, bin_size=bin_size,
-                       ion_size=ion_size, min_r_value=min_r_value, max_r_value=max_r_value)
+                       ion_size=ion_size, min_r_value=min_r_value, max_r_value=max_r_value,
+                       box_length=box_length)
 
         if num == 0:
             g = g_file
