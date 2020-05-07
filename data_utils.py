@@ -17,7 +17,7 @@ def midpoints(min_r_value, max_r_value, bin_size):
     max_r = max_r_value - 0.5*bin_size
     return np.arange(min_r, max_r, bin_size)
 
-def radial_distance(x_i, y_i, z_i, x_j, y_j, z_j, box_length=8.0):
+def radial_distance(x_i, y_i, z_i, x_j, y_j, z_j, box_length):
     """
     Calculates the effective distance between two particles using periodic BCs and the
     minimum image convention.
@@ -77,7 +77,7 @@ def rdf(r, prefactor, bin_size, ion_size, min_r_value, max_r_value, smoothed=Fal
 
 def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
           prefactor_c=None, smoothed=False, bin_size=0.15,
-          ion_size=0.15, min_r_value=0.0, max_r_value=1.0):
+          ion_size=0.15, min_r_value=0.0, max_r_value=1.0, box_length=12.0):
     """
     Given up to three pandas dataframes each comprising the 3D co-ordinates of all
     ions of a particular type (at a particular snapshot in time), this calculates the
@@ -96,6 +96,7 @@ def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
     :param ion_size: Ion size, for calculating the smoothed RDF, if smoothed = True (float)
     :param min_r_value: The minimum x value to be considered in the histogram (float).
     :param max_r_value: The maximum x value to be considered in the histogram (float).
+    :param box_length: The box length (float).
     :return: list of np vectors: [N_A, 3*N_bins]
     """
     G = []
@@ -107,7 +108,7 @@ def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
             if i == j:
                 continue
             x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_A.at[i, 2],
-                                ion_A.at[i, 3], ion_A.at[i, 4])
+                                ion_A.at[i, 3], ion_A.at[i, 4], box_length)
             r_a_j.append(x)
         r_a_j = np.asarray(r_a_j)
         g_a = rdf(r_a_j, prefactor_a, bin_size, ion_size, min_r_value, max_r_value, smoothed)
@@ -116,7 +117,7 @@ def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
         if ion_B is not None:
             for k, rows_B in ion_B.iterrows():
                 x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_B.at[k, 2],
-                                    ion_B.at[k, 3],ion_B.at[k, 4])
+                                    ion_B.at[k, 3],ion_B.at[k, 4], box_length)
                 r_b_j.append(x)
             r_b_j = np.asarray(r_b_j)
             g_b = rdf(r_b_j, prefactor_b, bin_size, ion_size, min_r_value, max_r_value, smoothed)
@@ -125,7 +126,7 @@ def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
         if ion_C is not None:
             for l, rows_C in ion_C.iterrows():
                 x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_C.at[l, 2],
-                                    ion_C.at[l, 3], ion_C.at[l, 4])
+                                    ion_C.at[l, 3], ion_C.at[l, 4], box_length)
                 r_c_j.append(x)
             r_c_j = np.asarray(r_c_j)
             g_c = rdf(r_c_j, prefactor_c, bin_size, ion_size, min_r_value, max_r_value, smoothed)
