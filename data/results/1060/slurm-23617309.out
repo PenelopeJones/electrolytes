@@ -1,0 +1,53 @@
+/home/pj321/elec_env/bin/python
+Changed directory to /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1060.
+
+JobID: 23617309
+======
+Time: Thu  7 May 07:05:31 BST 2020
+Running on master node: cpu-e-252
+Current directory: /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1060
+
+Nodes allocated:
+================
+cpu-e-252
+
+numtasks=32, numnodes=1, mpi_tasks_per_node=32 (OMP_NUM_THREADS=1)
+
+Executing command:
+==================
+mpirun -ppn 32 -np 32 bash ./run1.sh 
+
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+slurmstepd: error: *** STEP 23617309.0 ON cpu-e-252 CANCELLED AT 2020-05-07T13:05:49 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 23617309 ON cpu-e-252 CANCELLED AT 2020-05-07T13:05:49 DUE TO TIME LIMIT ***
+slurmstepd: error: task_p_post_term: rmdir(/sys/fs/cgroup/cpuset/slurm23617309/slurm23617309.4294967294_0) failed Device or resource busy

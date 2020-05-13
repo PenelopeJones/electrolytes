@@ -1,0 +1,658 @@
+/home/pj321/elec_env/bin/python
+Changed directory to /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1020.
+
+JobID: 23617243
+======
+Time: Thu  7 May 06:54:38 BST 2020
+Running on master node: cpu-e-1058
+Current directory: /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1020
+
+Nodes allocated:
+================
+cpu-e-1058
+
+numtasks=32, numnodes=1, mpi_tasks_per_node=32 (OMP_NUM_THREADS=1)
+
+Executing command:
+==================
+mpirun -ppn 32 -np 32 bash ./run2.sh 
+
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+mkdir: cannot create directory ‘bs015_is015’: File exists
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'
+Generating smoothed RDF descriptor.
+Traceback (most recent call last):
+  File "../../../../descriptor_generator.py", line 120, in <module>
+    args.ion_size, args.min_r_value, args.max_r_value, args.smoothed)
+  File "../../../../descriptor_generator.py", line 64, in main
+    nrows=20000, header=None, lineterminator='}')
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/pj321/elec_env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File ../../../../data/raw_data/1.0-20/config_300 does not exist: '../../../../data/raw_data/1.0-20/config_300'

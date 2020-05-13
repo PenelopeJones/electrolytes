@@ -1,0 +1,44 @@
+Directory = 2.0-40/
+ Dataset = 2040
+ Number of files = 35
+ Box length = 10.0
+ Bin size = 0.15
+ Ion size = 0.15
+ Minimum r value = 0.0
+ Maximum r value = 1.4
+ Smoothed = True
+ Processing ../../../../data/raw_data/2.0-40/config_0
+ Processing ../../../../data/raw_data/2.0-40/config_20
+ Processing ../../../../data/raw_data/2.0-40/config_40
+ Processing ../../../../data/raw_data/2.0-40/config_60
+ Processing ../../../../data/raw_data/2.0-40/config_80
+ Processing ../../../../data/raw_data/2.0-40/config_100
+ Processing ../../../../data/raw_data/2.0-40/config_120
+ Processing ../../../../data/raw_data/2.0-40/config_140
+ Processing ../../../../data/raw_data/2.0-40/config_160
+ Processing ../../../../data/raw_data/2.0-40/config_180
+ Processing ../../../../data/raw_data/2.0-40/config_200
+ Processing ../../../../data/raw_data/2.0-40/config_220
+ Processing ../../../../data/raw_data/2.0-40/config_240
+ Processing ../../../../data/raw_data/2.0-40/config_260
+ Processing ../../../../data/raw_data/2.0-40/config_280
+ Processing ../../../../data/raw_data/2.0-40/config_300
+ Processing ../../../../data/raw_data/2.0-40/config_320
+ Processing ../../../../data/raw_data/2.0-40/config_340
+ Processing ../../../../data/raw_data/2.0-40/config_360
+ Processing ../../../../data/raw_data/2.0-40/config_380
+ Processing ../../../../data/raw_data/2.0-40/config_400
+ Processing ../../../../data/raw_data/2.0-40/config_420
+ Processing ../../../../data/raw_data/2.0-40/config_440
+ Processing ../../../../data/raw_data/2.0-40/config_460
+ Processing ../../../../data/raw_data/2.0-40/config_480
+ Processing ../../../../data/raw_data/2.0-40/config_500
+ Processing ../../../../data/raw_data/2.0-40/config_520
+ Processing ../../../../data/raw_data/2.0-40/config_540
+ Processing ../../../../data/raw_data/2.0-40/config_560
+ Processing ../../../../data/raw_data/2.0-40/config_580
+ Processing ../../../../data/raw_data/2.0-40/config_600
+ Processing ../../../../data/raw_data/2.0-40/config_620
+ Processing ../../../../data/raw_data/2.0-40/config_640
+ Processing ../../../../data/raw_data/2.0-40/config_660
+ Processing ../../../../data/raw_data/2.0-40/config_680
