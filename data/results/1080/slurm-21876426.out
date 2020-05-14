@@ -1,0 +1,114 @@
+/home/pj321/elec_env/bin/python
+Changed directory to /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1080.
+
+JobID: 21876426
+======
+Time: Sun 12 Apr 19:02:21 BST 2020
+Running on master node: cpu-e-929
+Current directory: /home/pj321/~ml_physics/electrolytes/electrolytes/data/results/1080
+
+Nodes allocated:
+================
+cpu-e-929
+
+numtasks=32, numnodes=1, mpi_tasks_per_node=32 (OMP_NUM_THREADS=1)
+
+Executing command:
+==================
+mpirun -ppn 32 -np 32 bash ./run6.sh 
+
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+mkdir: cannot create directory ‘bs020_is020’: File exists
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
+Generating smoothed RDF descriptor.
+Descriptor saved in fv1080.npy
