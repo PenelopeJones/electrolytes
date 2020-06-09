@@ -1,0 +1,13 @@
+Directory = 0.5-80/
+ Dataset = 0580
+ Number of files = 4
+ Box length = 8.0
+ Bin size = 0.1
+ Ion size = 0.1
+ Minimum r value = 0.0
+ Maximum r value = 1.25
+ Smoothed = True
+ Processing ../../../../data/raw_data/0.5-80/config_0
+ Processing ../../../../data/raw_data/0.5-80/config_20
+ Processing ../../../../data/raw_data/0.5-80/config_40
+ Processing ../../../../data/raw_data/0.5-80/config_60
