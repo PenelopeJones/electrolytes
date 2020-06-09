@@ -12,7 +12,7 @@ max_iterations=300
 
 for dataset in 0580 1080; do
   for label in bs010_is010 bs015_is010 bs020_is010; do
-    path_to_dir="data/results/${dataset}/${label}"
+    path_to_dir="data/results/${dataset}/${label}/"
     echo $path_to_dir
     for K in 1 2 3; do
       python inference.py --directory ${path_to_dir} --dataset ${dataset} --n ${n} \

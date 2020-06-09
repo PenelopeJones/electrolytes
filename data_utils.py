@@ -117,7 +117,7 @@ def dists(ion_A, prefactor_a, ion_B=None, prefactor_b=None, ion_C=None,
         if ion_B is not None:
             for k, rows_B in ion_B.iterrows():
                 x = radial_distance(ion_A.at[j, 2], ion_A.at[j, 3], ion_A.at[j, 4], ion_B.at[k, 2],
-                                    ion_B.at[k, 3],ion_B.at[k, 4], box_length)
+                                    ion_B.at[k, 3], ion_B.at[k, 4], box_length)
                 r_b_j.append(x)
             r_b_j = np.asarray(r_b_j)
             g_b = rdf(r_b_j, prefactor_b, bin_size, ion_size, min_r_value, max_r_value, smoothed)

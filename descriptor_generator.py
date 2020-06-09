@@ -36,7 +36,7 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
 
     label = 'bs' + str(bin_size).replace('.', '') + '_is' + str(ion_size).replace('.', '')
 
-    f = open(dataset + '_settings.txt', 'w')
+    f = open('binary_' + dataset + '_settings.txt', 'w')
     f.write('Directory = ' + directory)
     f.write('\n Dataset = ' + dataset)
     f.write('\n Number of files = ' + str(num_files))
@@ -54,7 +54,7 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         print("Generating standard RDF descriptor.")
 
     for num in range(40, int(20 * (num_files - 1) + 1), 20):
-        filename = '../../../../data/raw_data/' + directory + 'config_' + str(num)
+        filename = '../../../../data/raw_data/binaries/' + directory + 'config_' + str(num)
         f.write('\n Processing ' + str(filename))
         f.flush()
 
@@ -63,18 +63,17 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
                          nrows=20000, header=None, lineterminator='}')
 
         # Identify the particle type subsets
-        solvent = df.loc[df[5] == 2]
+        #solvent = df.loc[df[5] == 2]
         cation = df.loc[df[5] == 1]
         anion = df.loc[df[5] == 0]
 
         # Generate the prefactors
         prefactor_an = box_length ** 3 / (len(anion) - 1)
         prefactor_cat = box_length ** 3 / (len(cation))
-        prefactor_sol = box_length ** 3 / (len(solvent))
+        #prefactor_sol = box_length ** 3 / (len(solvent))
 
         g_file = dists(ion_A=anion, prefactor_a=prefactor_an, ion_B=cation,
-                       prefactor_b=prefactor_cat, ion_C=solvent,
-                       prefactor_c=prefactor_sol, smoothed=smoothed, bin_size=bin_size,
+                       prefactor_b=prefactor_cat, smoothed=smoothed, bin_size=bin_size,
                        ion_size=ion_size, min_r_value=min_r_value, max_r_value=max_r_value,
                        box_length=box_length)
 
@@ -83,7 +82,7 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         else:
             g = np.concatenate((g, g_file), axis=0)
 
-        path_to_save = 'fv' + dataset + '.npy'
+        path_to_save = 'fv' + dataset + '_binary.npy'
         np.save(path_to_save, g)
 
     print('Descriptor saved in ' + path_to_save)
