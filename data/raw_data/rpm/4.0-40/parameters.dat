@@ -1,0 +1,11 @@
+# T=0.9863867854675367 
+ n_part=4818 
+ n_ion=2409 
+ n_solvent=0 
+ d0=0.4 d1=0.4 d=0.4 eps=10000 
+ epsmax = 10000 
+ box_l=10 
+ lbj=1.39 
+ volume_fraction=0.16144307868065172 
+ rad = 0  
+ shift = 0.25
