@@ -1,7 +1,7 @@
-# Understanding the correlations within concentrated electrolytes using variational inference
+# Bayesian inference reveals hidden structure in concentrated electrolytes
 
-This repository contains code to generate the smoothed or standard radial distribution functions, 
-used in my MSc Project. 
+This repository contains code to generate smoothed or standard radial distribution functions. 
+
 It also contains my implementation of the Variational Mixture of Gaussians, outlined by C. Bishop in C10,
 "Pattern Recognition and Machine Learning". 
 
