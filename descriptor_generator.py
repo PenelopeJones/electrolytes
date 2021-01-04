@@ -54,7 +54,7 @@ def main(directory, dataset, num_files, box_length, bin_size, ion_size, min_r_va
         print("Generating standard RDF descriptor.")
 
     for num in range(40, int(20 * (num_files - 1) + 1), 20):
-        filename = '../../../../data/raw_data/' + directory + 'config_' + str(num)
+        filename = '../../../../data/raw_data/binary' + directory + 'config_' + str(num)
         f.write('\n Processing ' + str(filename))
         f.flush()
 

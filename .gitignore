@@ -3,3 +3,16 @@ __pycache__
 venv-pytorch/
 .DS_Store
 *env/
+/experiments/
+/simulations/
+/data/
+/descriptor_generator_snap1.py
+/inference_known.py
+/inference_snap.py
+/snap_utils1.py
+/test_run_snap.sh
+/mda_xtc_to_xyz.py
+/known_inference.sh
+/reduce_dims_snap.py
+/charge_me_slowly.csv
+/testbed/

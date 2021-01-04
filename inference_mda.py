@@ -9,9 +9,9 @@ from data_utils import all_sampler
 
 import pdb
 
-def main(directory, dataset, n, K, prior, alpha0, beta0, v0, w0_scalar,
+def main(directory, conc, type, n, K, prior, alpha0, beta0, v0, w0_scalar,
          run_number, max_iterations, VERBOSE):
-    Xt = np.load(directory + 'rfv' + dataset + '.npy')
+    Xt = np.load(directory + 'rfv_' + conc + 'm_litfsi_' + type + '.npy')
 
     vks = []
     wk_invs = []
@@ -20,14 +20,14 @@ def main(directory, dataset, n, K, prior, alpha0, beta0, v0, w0_scalar,
     scalers = []
     nks = []
 
-    splits = [0, 1, 2]
+    splits = [1, 2]
     for split in splits:
         if split == 0:
             X = Xt[0:n, 0:8]
         elif split == 1:
-            X = Xt[-n-1:-1, 0:8]
+            X = Xt[n:2*n, 0:8]
         elif split ==2:
-            X = Xt[int(0.5*n):int(1.5*n)]
+            X = Xt[2*n:3*n, 0:8]
 
         print(np.mean(X, axis=0))
         print(X.shape)
@@ -49,10 +49,10 @@ def main(directory, dataset, n, K, prior, alpha0, beta0, v0, w0_scalar,
         elif prior == 'ard':
             alpha0 = 0.01
 
-        filename = dataset + str(split) + '_' + str(K) + 'c'
+        filename = conc + 'm_' + type + '_litfsi_dmedol_' + str(split) + '_' + str(K) + 'c'
 
         with open(directory + filename + '.txt', 'w+') as f:
-            f.write('\n Dataset = ' + str(dataset))
+            f.write('\n Concentration, type = ' + conc + ',' + type)
             f.write('\n Split = ' + str(split))
             f.write('\n Number of data points = ' + str(n))
             f.write('\n Prior = ' + str(prior))
@@ -92,15 +92,14 @@ def main(directory, dataset, n, K, prior, alpha0, beta0, v0, w0_scalar,
                     betak = bgmm.betak[idx]
                     vk = bgmm.vk[idx]
 
-
-                    np.save(directory + filename + '_elbo_max1.npy', elbo_max)
-                    np.save(directory + filename + '_Z_max1.npy', Z_max)
+                    np.save(directory + filename + '_elbo_max.npy', elbo_max)
+                    np.save(directory + filename + '_Z_max.npy', Z_max)
                     #np.save(directory + filename + '_nk_max1.npy', nk_max)
 
             f.write("\n Maximum ELBO = {:.6f}".format(elbo_max))
             f.close()
 
-        if K == 2:
+        if K == 3:
             nks.append(nk_max)
             wk_invs.append(wk_inv)
             mks.append(mk)
@@ -108,12 +107,12 @@ def main(directory, dataset, n, K, prior, alpha0, beta0, v0, w0_scalar,
             vks.append(vk)
             scalers.append(scaler)
 
-    if K == 2:
+    if K == 3:
         means, stds = all_sampler(wk_invs, vks, betaks, mks, scalers, n_samples=1000)
         nks = np.array(nks)
-        np.save(directory + dataset + '_means.npy', means)
-        np.save(directory + dataset + '_stds.npy', stds)
-        np.save(directory + dataset + '_nks.npy', nks)
+        np.save(directory + conc + 'm_' + type + '_meansK3.npy', means)
+        np.save(directory + conc + 'm_' + type + '_stdsK3.npy', stds)
+        np.save(directory + conc + 'm_' + type + '_nksK3.npy', nks)
 
 
 
@@ -121,7 +120,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', default='data/results/', help="Directory where "
                                                                          "descriptors are stored.")
-    parser.add_argument('--dataset', default='1080', help="Dataset.")
+    parser.add_argument('--conc', default='1', help="Concentration.")
+    parser.add_argument('--type', default='an', help="Iontype, an or cat.")
     parser.add_argument('--n', type=int, default=4000,
                         help='Number of datapoints to use.')
     parser.add_argument('--K', type=int, default=2,
@@ -148,5 +148,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    main(args.directory, args.dataset, args.n, args.K, args.prior, args.alpha0, args.beta0, args.v0,
+    main(args.directory, args.conc, args.type, args.n, args.K, args.prior, args.alpha0, args.beta0, args.v0,
          args.w0_scalar, args.run_number, args.max_iterations, args.VERBOSE)

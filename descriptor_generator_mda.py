@@ -40,6 +40,12 @@ def main(args):
     if args.concentration == '1':
         n_atoms = 1560
         box_length = 109.57
+    elif args.concentration == '2':
+        n_atoms = 3200
+        box_length = 110.33
+    elif args.concentration == '5':
+        n_atoms = 8000
+        box_length = 110.83
     else:
         raise Exception('concentration must be 1, 2 or 5.')
 
@@ -59,12 +65,11 @@ def main(args):
     else:
         print("Generating standard RDF descriptors.")
 
-    filename = '../../../../data/raw_data/sota/' + args.concentration + 'M-LiTFSI-DMEDOL/compressed-nvt-productive.xyz'
+    filename = '../../../../../data/raw_data/sota/' + args.concentration + 'M-LiTFSI-DMEDOL/compressed-nvt-productive.xyz'
     path_to_save = 'fv_' + args.concentration + 'm_litfsi_'
 
     for num in range(args.num_files):
         df = pd.read_csv(filename, skiprows=2+num*(2+n_atoms), delim_whitespace=True, nrows=n_atoms, header=None, engine='python')
-        pdb.set_trace()
 
         # Identify the particle type subsets
         cation = df.loc[df[0] == 'LiT']

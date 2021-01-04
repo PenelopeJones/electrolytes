@@ -1,20 +1,26 @@
+from exp_utils import *
+
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-mpl.rc('font',family='Times New Roman')
+import matplotlib.colors as colors
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
+                               AutoMinorLocator)
 
-from exp_utils import *
+import pdb
+mpl.rc('font',family='Times New Roman')
 
 def main():
 
     # Choose the simulation parameters
     sim_params = ['1080']
     # Set plot parameters
-    color1 = "C0"
-    color2 = "C1"
+    color1 = "#2A00FB"
+    color2 = "#F18400"
     color3 = "C2"
     color4 = "C3"
-    fontsize = 20
+    fontsize = 28
     ms = 6
     capsize = 3.0
     marker = 'o'
@@ -66,10 +72,12 @@ def main():
                     nk1.append(nk_i[idx[1]])
                     m2.append(m_i[idx[0], :])
                     nk2.append(nk_i[idx[0]])
+
             elbos = np.array(elbos)
             bf = elbos - elbos[0]
             bf[-1] = bf[-1] - bf[-2]
             bfs.append(bf)
+        pdb.set_trace()
         bfs = np.reshape(np.array(bfs), (-1, 3))
         bf_mean = np.mean(bfs, axis=0)
         bf_std = np.std(bfs, axis=0)
@@ -84,23 +92,34 @@ def main():
         h_num2, h_charge2, h_std2 = rpm_correlation_functions(m2_mn, m2_std)
         h_num1, h_charge1, h_std1 = rpm_correlation_functions(m1_mn, m1_std)
 
-        # Zip the parameters
-        colors = [color1, color2]
-        labels = ['Type 1: (' + str(nk1_mn) + ' $\pm$ ' + str(nk1_std) + ')%',
-                  'Type 2: (' + str(nk2_mn) + ' $\pm$ ' + str(nk2_std) + ')%']
-        means = [m1_mn, m2_mn]
-        stds = [m1_std, m2_std]
-        h_nums = [h_num1, h_num2]
-        h_charges = [h_charge1, h_charge2]
-        h_stds = [h_std1, h_std2]
+        if bf_mean[1] > 0:
+            # Zip the parameters
+            colors = [color1, color2]
+            labels = ['Type 1: (' + str(nk1_mn) + ' $\pm$ ' + str(nk1_std) + ')%',
+                      'Type 2: (' + str(nk2_mn) + ' $\pm$ ' + str(nk2_std) + ')%']
+            means = [m1_mn, m2_mn]
+            stds = [m1_std, m2_std]
+            h_nums = [h_num1, h_num2]
+            h_charges = [h_charge1, h_charge2]
+            h_stds = [h_std1, h_std2]
+
+        else:
+            colors = [color1]
+            labels = ['Type 1/2: (' + str(nk2_mn) + ' $\pm$ ' + str(nk2_std) + ')%']
+            means = [m2_mn]
+            stds = [m2_std]
+            h_nums = [h_num2]
+            h_charges = [h_charge2]
+            h_stds = [h_std2]
+
 
         # Plot the hyperparameters m
         g_plotter(distance, means, stds, colors, labels, sim_param, figsize,
-                  capsize, linewidth, fontsize, figdirectory, dim=4)
+                  capsize, linewidth, fontsize, figdirectory, dim=4, rpm=False)
 
         # Plot the correlation functions
         cfs_plotter(distance, h_nums, h_charges, h_stds, colors, labels, sim_param,
-                    figsize, capsize, linewidth, fontsize, figdirectory, dim=4)
+                    figsize, capsize, linewidth, fontsize, figdirectory, dim=4, rpm=False)
 
 
 if __name__ == '__main__':

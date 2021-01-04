@@ -1,96 +1,42 @@
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.colors as colors
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
+                               AutoMinorLocator)
+
 mpl.rc('font',family='Times New Roman')
 
 from exp_utils import *
 
 import pdb
 
-def colorbar(mappable, label, fontsize):
-    from mpl_toolkits.axes_grid1 import make_axes_locatable
-    import matplotlib.pyplot as plt
-    last_axes = plt.gca()
-    ax = mappable.axes
-    fig = ax.figure
-    divider = make_axes_locatable(ax)
-    cax = divider.append_axes("right", size="5%", pad=0.05)
-    cbar = fig.colorbar(mappable, cax=cax)
-    cbar.set_label(label=label, size=fontsize-2)
-    cbar.ax.tick_params(axis='y', direction='in', labelsize=fontsize - 4)
-    plt.sca(last_axes)
-    plt.tight_layout()
-    return cbar
-
-
-def shiftedColorMap(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap'):
-    '''
-    Function to offset the "center" of a colormap. Useful for
-    data with a negative min and positive max and you want the
-    middle of the colormap's dynamic range to be at zero.
-
-    Input
-    -----
-      cmap : The matplotlib colormap to be altered
-      start : Offset from lowest point in the colormap's range.
-          Defaults to 0.0 (no lower offset). Should be between
-          0.0 and `midpoint`.
-      midpoint : The new center of the colormap. Defaults to
-          0.5 (no shift). Should be between 0.0 and 1.0. In
-          general, this should be  1 - vmax / (vmax + abs(vmin))
-          For example if your data range from -15.0 to +5.0 and
-          you want the center of the colormap at 0.0, `midpoint`
-          should be set to  1 - 5/(5 + 15)) or 0.75
-      stop : Offset from highest point in the colormap's range.
-          Defaults to 1.0 (no upper offset). Should be between
-          `midpoint` and 1.0.
-    '''
-    cdict = {
-        'red': [],
-        'green': [],
-        'blue': [],
-        'alpha': []
-    }
-
-    # regular index to compute the colors
-    reg_index = np.linspace(start, stop, 257)
-
-    # shifted index to match the data
-    shift_index = np.hstack([
-        np.linspace(0.0, midpoint, 128, endpoint=False),
-        np.linspace(midpoint, 1.0, 129, endpoint=True)
-    ])
-
-    for ri, si in zip(reg_index, shift_index):
-        r, g, b, a = cmap(ri)
-
-        cdict['red'].append((si, r, r))
-        cdict['green'].append((si, g, g))
-        cdict['blue'].append((si, b, b))
-        cdict['alpha'].append((si, a, a))
-
-    newcmap = matplotlib.colors.LinearSegmentedColormap(name, cdict)
-    plt.register_cmap(cmap=newcmap)
-
-    return newcmap
-
-
-
-
-
 
 def main():
-
-    conc_map = {'1.0': 0, '1.5': 1, '2.0': 2, '2.5': 3, '3.0': 4}
     eps_map = {'20.0': 0, '40.0': 1, '60.0': 2, '80.0': 3}
-    sims_matrix = np.zeros((4, 5))
+    num_map = {'1': 'o', '2': 's', '3': 'v'}
 
-    # Choose the simulation parameters
-    sim_params = ['1020', '1040', '1060', '1080', '1520', '1540', '1560', '1580',
-                  '2020', '2040', '2060', '2080', '2520', '2540', '2560', '2580',
-                  '3020', '3040', '3060', '3080']
+    sims_matrix = np.zeros((4, 5))
+    nums_matrix = np.zeros((4, 5))
+
+    markers_list = []
+
+    rpm = True
+
+    if rpm:
+        conc_map = {'1.0': 0, '2.0': 1, '3.0': 2, '4.0': 3, '6.0': 4}
+        sim_params = ['1020', '1040', '1060', '1080', '2020', '2060', '2080',
+                      '3020', '3040', '3060', '3080', '4020', '4040', '4060', '4080',
+                      '6020', '6040', '6060', '6080']
+        figdirectory = "figures/rpm/elbos/"
+    else:
+        conc_map = {'1.0': 0, '1.5': 1, '2.0': 2, '2.5': 3, '3.0': 4}
+        sim_params = ['1020', '1040', '1060', '1080', '1520', '1540', '1560', '1580',
+                      '2020', '2040', '2060', '2080', '2520', '2540', '2560', '2580',
+                      '3020', '3040', '3060', '3080']
+        figdirectory = "figures/spm/elbos/"
+    cmap = mpl.cm.RdBu_r
+
     # Set plot parameters
     color1 = "C0"
     color2 = "C1"
@@ -101,7 +47,14 @@ def main():
     capsize = 3.0
     marker = 'o'
     linewidth = 3.0
-    figsize = (6, 8)
+    figsize = (9.5, 8)
+
+    mcolor = 'white'
+    ec = 'white'
+    s = 160
+
+    annotate = 'symbol'
+    shift = 0.08
 
     # Data parameters
     N = 8000
@@ -114,14 +67,20 @@ def main():
     splits = [0, 1, 2]
     ks = [1, 2, 3]
 
-    figdirectory = "figures/spm/elbos/"
-
     concs = []
     epss = []
     numbers = []
     bf2s = []
+
     xy = []
 
+    conc1_list = []
+    eps1_list = []
+    conc2_list = []
+    eps2_list = []
+    conc3_list = []
+    eps3_list = []
+    text_list = []
 
     for sim_param in sim_params:
         title = 'c = {}.{}M, $\epsilon$ = {}'.format(sim_param[0], sim_param[1], sim_param[2:])
@@ -133,11 +92,14 @@ def main():
         conc = np.float(sim_param[0] + '.' + sim_param[1])
         eps = np.float(sim_param[2:])
 
-        concs.append(conc)
-        epss.append(eps)
+        concs.append(conc_map[str(conc)])
+        epss.append(eps_map[str(eps)])
         xy.append((conc, eps))
 
-        name_start = sim_param
+        if rpm:
+            name_start = sim_param + '_binaries_'
+        else:
+            name_start = sim_param
 
         bfs = []
 
@@ -158,22 +120,31 @@ def main():
         bf2s.append(bf_mean[1])
 
         if bf_mean[1] > 0:
+            text_list.append('+')
             if bf_mean[2]>0:
                 number = 3
+                conc2_list.append(conc_map[str(conc)])
+                eps2_list.append(eps_map[str(eps)])
             else:
                 number = 2
+                conc2_list.append(conc_map[str(conc)])
+                eps2_list.append(eps_map[str(eps)])
         else:
             number = 1
+            conc1_list.append(conc_map[str(conc)])
+            eps1_list.append(eps_map[str(eps)])
 
         numbers.append(number)
+
 
         print('\n ' + sim_param + ' log(BFs)')
         print(bf_mean[1:])
         print(bf_std[1:])
 
         sims_matrix[eps_map[str(eps)], conc_map[str(conc)]] = bf_mean[1]
+        nums_matrix[eps_map[str(eps)], conc_map[str(conc)]] = number
 
-
+    sims_matrix[eps_map[str(40.0)], conc_map[str(2.0)]] = np.nan
     print(concs)
     print(epss)
     print(numbers)
@@ -181,45 +152,81 @@ def main():
     #pdb.set_trace()
     numbers = np.array(numbers)
 
-    labels = ['$K_{opt}$ = 3', '$K_{opt}$ = 2', '$K_{opt}$ = 1']
-
     # Scatter
-    figsize = (10, 8)
     fig, ax = plt.subplots(figsize=figsize)
+    for axis in ['bottom', 'left']:
+        ax.spines[axis].set_linewidth(3.0)
+    for axis in ['top', 'right']:
+        ax.spines[axis].set_visible(False)
     #plt.scatter(concs, epss, s=30,
     #            c=numbers, cmap=plt.cm.get_cmap('summer', 3))
 
-    vmin = -8800
-    vmax = 8800
+    vmin = -8100
+    vmax = 8100
     mid_val = 0
-    cmap = mpl.cm.RdBu_r
 
-    new_cmap = shiftedColorMap(cmap, start=vmin, midpoint=0, stop=vmax)
-
-
+    cmap = mpl.cm.coolwarm
+    cmap.set_bad(color='white')
     im = ax.imshow(sims_matrix, cmap=cmap, clim=(vmin, vmax), norm=colors.SymLogNorm(linthresh=1, linscale=1.,
                                               vmin=vmin, vmax=vmax))
 
-    ax.set_xlabel('c (M)', fontsize=fontsize)
-    ax.set_ylabel('$\epsilon$', fontsize=fontsize)
-    
-    xticklabels = [1.0, 1.5, 2.0, 2.5, 3.0]
-    yticklabels = [20, 40, 60, 80]
-    xticks = [0, 1, 2, 3, 4]
-    yticks = [0, 1, 2, 3]
+    ax.set_xlabel('c (M)', fontsize=fontsize+2)
+    ax.set_ylabel('$\mathregular{\epsilon}$', fontsize=fontsize+2)
+    ax.tick_params(axis=u'both', which=u'minor', length=0)
 
+    if rpm:
+        xticklabels = [1.0, 2.0, 3.0, 4.0, 6.0]
+    else:
+        xticklabels = [1.0, 1.5, 2.0, 2.5, 3.0]
+
+    xticks = [0, 1, 2, 3, 4]
+    yticklabels = [20, 40, 60, 80]
+    yticks = [0, 1, 2, 3]
     plt.xlim(-0.5, 4.5)
     plt.ylim(-0.5, 3.5)
     ax.set_xticks(xticks)
     ax.set_xticklabels(xticklabels, fontsize=fontsize)
     ax.set_yticks(yticks)
     ax.set_yticklabels(yticklabels, fontsize=fontsize)
+
+    # For the minor ticks, use no labels; default NullFormatter.
+    ax.xaxis.set_minor_locator(MultipleLocator(0.5))
+    ax.yaxis.set_minor_locator(MultipleLocator(0.5))
+    ax.grid(True, which="minor", color="w", linestyle='-', linewidth=10)
+
     ax.set_aspect('auto')
-    cbarlabel = 'log(BF(2|1))'
+    cbarlabel = 'log $BF(K=2|K=1)$'
     cb = colorbar(im, cbarlabel, fontsize)
 
+    conc1_list = np.array(conc1_list)
+    eps1_list = np.array(eps1_list)
+    conc2_list = np.array(conc2_list)
+    eps2_list = np.array(eps2_list)
+    conc3_list = np.array(conc3_list)
 
-    plt.savefig(figdirectory + 'elbo21_cmap_noannotation.png')
+    shift = 0.2
+
+    annotate = 'domino'
+    if annotate == 'text':
+        # Loop over data dimensions and create text annotations.
+        for i in range(len(4)):
+            for j in range(len(4)):
+                text = ax.text(j, i, harvest[i, j],
+                               ha="center", va="center", color="w")
+
+        texts = annotate_heatmap(im, data=nums_matrix, valfmt="{x:.0f}", fontsize=fontsize-4, weight='bold')
+        plt.savefig(figdirectory + 'elbo21_cmap_txt_annotation.png')
+    elif annotate == 'symbol':
+        markers_list = ['v', '*']
+        scatter = mscatter(concs, epss, m = markers_list, ax=ax, color = 'black', s = 160)
+        plt.savefig(figdirectory + 'elbo_cmap_symbol_annotation.png')
+    elif annotate == 'domino':
+        ax.scatter(conc1_list, eps1_list, marker = 'v', color = mcolor, s=s+3, edgecolor = ec)
+        ax.scatter(conc2_list, eps2_list, marker = 'd', color = mcolor, s=s+3, edgecolor = ec)
+        #ax.scatter(conc2_list - shift, eps2_list + shift, marker ='o', color=mcolor, s=s, edgecolor = ec)
+        plt.savefig(figdirectory + 'elbo_cmap_domino_annotation.png')
+    else:
+        plt.savefig(figdirectory + 'elbo_cmap_noannotation.png')
 
 
 
