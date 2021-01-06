@@ -1,4 +1,4 @@
-# Bayesian inference reveals hidden structure in concentrated electrolytes
+# Bayesian unsupervised learning reveals hidden structure in concentrated electrolytes
 This is the code that was used for the analysis conducted in our paper:
 
 [Bayesian unsupervised learning reveals hidden structure in concentrated electrolytes](https://arxiv.org/abs/2012.10694). 
